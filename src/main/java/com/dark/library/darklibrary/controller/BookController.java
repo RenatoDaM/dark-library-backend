@@ -4,7 +4,6 @@ import com.dark.library.darklibrary.controller.openapi.BookOpenApiImpl;
 import com.dark.library.darklibrary.request.BookRequest;
 import com.dark.library.darklibrary.exception.BookConflictException;
 import com.dark.library.darklibrary.exception.BookNotFoundException;
-import com.dark.library.darklibrary.model.BookTypeModel;
 import com.dark.library.darklibrary.request.BookTypeRequest;
 import com.dark.library.darklibrary.response.Response;
 import com.dark.library.darklibrary.service.BookService;
