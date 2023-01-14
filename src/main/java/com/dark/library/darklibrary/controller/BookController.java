@@ -38,8 +38,8 @@ public class BookController implements BookOpenApiImpl {
     @DeleteMapping("/delete/book/{bookId}")
     public ResponseEntity<Object> deleteBook(@PathVariable Integer bookId) throws BookNotFoundException {
         bookService.delete(bookId);
-        Response response = new Response(200, "Book with ID: " + bookId + " Deleted");
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        Response response = new Response(204, "Book with ID: " + bookId + " Deleted");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response);
     }
     @GetMapping("/search/book")
     public ResponseEntity<Object> readByIdBook(@RequestParam(required = true) Integer bookId) throws BookNotFoundException {
@@ -66,8 +66,8 @@ public class BookController implements BookOpenApiImpl {
     @DeleteMapping("/delete/book/type/{bookTypeId}")
     public ResponseEntity<Object> deleteType(@PathVariable (value = "bookTypeId" )Integer typeId) throws BookNotFoundException {
         bookService.deleteType(typeId);
-        Response response = new Response(200, "Type ID: " + typeId + " deleted");
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        Response response = new Response(204, "Type ID: " + typeId + " deleted");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response);
     }
     @GetMapping("/search/book/type")
     public ResponseEntity<Object> readByIdType(@RequestParam Integer typeId) throws BookNotFoundException {

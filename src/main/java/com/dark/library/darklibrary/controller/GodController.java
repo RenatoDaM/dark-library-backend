@@ -43,8 +43,8 @@ public class GodController implements GodOpenApiImpl {
     @DeleteMapping("/delete/god/{godId}")
     public ResponseEntity<Object> deleteGod(@PathVariable Integer godId) throws BookNotFoundException {
         godService.deleteGod(godId);
-        Response response = new Response(200, "God with ID: " + godId + " has returned to oblivion");
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        Response response = new Response(204, "God with ID: " + godId + " has returned to oblivion");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response);
     }
 
     @GetMapping("/search/god")
@@ -75,8 +75,8 @@ public class GodController implements GodOpenApiImpl {
     @DeleteMapping("/delete/god/type/{godTypeId}")
     public ResponseEntity<Object> deleteGodType(@PathVariable Integer godTypeId) throws BookNotFoundException {
         godService.deleteGodType(godTypeId);
-        ErrorResponse errorResponse = new ErrorResponse(200, "God type ID " + godTypeId + " deleted successfully");
-        return ResponseEntity.status(HttpStatus.OK).body(errorResponse);
+        ErrorResponse errorResponse = new ErrorResponse(204, "God type ID " + godTypeId + " deleted successfully");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(errorResponse);
     }
 
     @GetMapping("/search/god/type")
