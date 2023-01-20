@@ -8,7 +8,6 @@ import jakarta.validation.constraints.NotNull;
 public class BookRequest {
     @Schema(description = "The database auto generate ID, you can leave this empty if you want.")
     Integer bookId;
-
     @Schema(description = "book's name.", example = "Necronomicon")
     @NotNull
     @NotBlank

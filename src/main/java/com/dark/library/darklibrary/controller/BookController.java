@@ -10,6 +10,7 @@ import com.dark.library.darklibrary.service.BookService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -22,14 +23,16 @@ public class BookController implements BookOpenApiImpl {
     @Autowired
     BookService bookService;
 
-    @PostMapping("/create/book")
+    @PostMapping(value = "/create/book", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Object> saveBook(@Valid @RequestBody BookRequest bookRequest) throws BookConflictException, BookNotFoundException {
         bookService.save(bookRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(bookRequest);
     }
 
 
-    @PutMapping("/alter/book")
+    @PutMapping(value = "/alter/book", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Object> updateBook(@Valid @RequestBody BookRequest bookRequest) throws BookNotFoundException, BookConflictException {
         bookService.update(bookRequest);
         return ResponseEntity.status(HttpStatus.OK).body(bookRequest);
@@ -40,23 +43,25 @@ public class BookController implements BookOpenApiImpl {
         Response response = new Response(204, "Book with ID: " + bookId + " Deleted");
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response);
     }
-    @GetMapping("/search/book")
+    @GetMapping(value = "/search/book", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Object> readByIdBook(@RequestParam(required = true) Integer bookId) throws BookNotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(bookService.readById(bookId));
     }
-    @GetMapping("/search/book/all")
+    @GetMapping(value = "/search/book/all", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Object> readAllBook() {
         return ResponseEntity.status(HttpStatus.OK).body(bookService.readAll());
     }
 
     // ========== BookType Controller =========== //
 
-    @PostMapping("/create/book/type")
+    @PostMapping(value = "/create/book/type", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Object> saveType(@RequestBody BookTypeRequest bookTypeRequest) throws BookConflictException {
         bookService.saveType(bookTypeRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(bookTypeRequest);
     }
-    @PutMapping("/alter/book/type")
+    @PutMapping(value = "/alter/book/type", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Object> updateType(@RequestBody BookTypeRequest bookTypeRequest) throws BookConflictException, BookNotFoundException {
         bookService.updateType(bookTypeRequest);
         return ResponseEntity.status(HttpStatus.OK).body(bookTypeRequest);
@@ -68,11 +73,11 @@ public class BookController implements BookOpenApiImpl {
         Response response = new Response(204, "Type ID: " + typeId + " deleted");
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response);
     }
-    @GetMapping("/search/book/type")
+    @GetMapping(value = "/search/book/type", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE} )
     public ResponseEntity<Object> readByIdType(@RequestParam Integer typeId) throws BookNotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(bookService.readByIdType(typeId));
     }
-    @GetMapping("/search/book/type/all")
+    @GetMapping(value = "/search/book/type/all", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Object> readAllType() {
         return ResponseEntity.status(HttpStatus.OK).body(bookService.readAllType());
     }

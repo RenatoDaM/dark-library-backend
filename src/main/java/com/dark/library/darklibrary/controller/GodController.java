@@ -10,6 +10,7 @@ import com.dark.library.darklibrary.response.Response;
 import com.dark.library.darklibrary.service.GodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,13 +25,15 @@ public class GodController implements GodOpenApiImpl {
     // NECESSÁRIO USAR UM RESPONSE PRA USAR CONSTRAINTS
 
     // ============ GOD ============== //
-    @PostMapping("/create/god")
+    @PostMapping(value = "/create/god", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Object> createGod(@RequestBody GodRequest godRequest) throws BookConflictException {
         godService.createGod(godRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(godRequest);
     }
 
-    @PutMapping("/alter/god")
+    @PutMapping(value = "/alter/god", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Object> updateGod(@RequestBody GodRequest godRequest) throws BookNotFoundException, BookConflictException {
         godService.updateGod(godRequest);
         return ResponseEntity.status(HttpStatus.OK).body(godRequest);
@@ -43,7 +46,7 @@ public class GodController implements GodOpenApiImpl {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response);
     }
 
-    @GetMapping("/search/god")
+    @GetMapping(value = "/search/god", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<Object> readByIdGod(@RequestParam Integer godId) throws BookNotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(godService.readByIdGod(godId));
     }
