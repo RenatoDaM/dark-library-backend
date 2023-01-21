@@ -34,7 +34,7 @@ public interface BookOpenApiImpl {
             @ApiResponse(description = "Operation FAILED. A book with this ID was not found", responseCode = "404", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
             @ApiResponse(description = "Operation FAILED. A book with this name has already been registered", responseCode = "409", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
     })
-    public ResponseEntity<Object> updateBook(@RequestBody BookRequest bookRequest) throws BookNotFoundException, BookConflictException;
+    public ResponseEntity<Object> updateBook(@Valid @RequestBody BookRequest bookRequest) throws BookNotFoundException, BookConflictException;
 
 
     @Operation(summary = "DELETE a book by ID")
