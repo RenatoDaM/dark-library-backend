@@ -11,7 +11,6 @@ package com.dark.library.darklibrary.domain.model;
  */
 
 public class BookModel {
-
     private Integer bookId;
     private String bookName;
     private String bookType;

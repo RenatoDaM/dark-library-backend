@@ -39,13 +39,13 @@ public class BookDAO {
     }
 
     public BookModel readById(Integer id) {
-        String sql = "SELECT book_id as bookId, book_name as bookName, book_type as bookType, book_god as bookGod FROM book WHERE book_id = :bookId";
+        String sql = "SELECT b.book_id as bookId, b.book_name as bookName, t.book_type_name as bookType, g.god_name as bookGod FROM book as b JOIN book_type as t ON book_type = book_type_id JOIN god as g ON book_god = god_id WHERE book_id = :bookId";
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource("bookId", id);
         return namedParameter.queryForObject(sql, mapSqlParameterSource, new BeanPropertyRowMapper<>(BookModel.class));
     }
 
     public List<BookModel> readAll() {
-        String sql = "SELECT book_id as bookId, book_name as bookName, book_god as bookGod, book_type as bookType FROM book";
+        String sql = "SELECT b.book_id as bookId, b.book_name as bookName, t.book_type_name as bookType, g.god_name as bookGod FROM book as b JOIN book_type as t ON book_type = book_type_id JOIN god as g ON book_god = god_id";
         List<BookModel> resultList = namedParameter.query(sql, new BeanPropertyRowMapper<>(BookModel.class));
         return resultList;
     }
