@@ -1,10 +1,10 @@
 package com.dark.library.darklibrary.api.controller.openapi;
 
-import com.dark.library.darklibrary.domain.exception.BookNotFoundException;
+import com.dark.library.darklibrary.api.exception.BookNotFoundException;
 import com.dark.library.darklibrary.api.request.BookRequest;
 import com.dark.library.darklibrary.api.request.BookTypeRequest;
 import com.dark.library.darklibrary.api.response.ErrorResponse;
-import com.dark.library.darklibrary.domain.exception.BookConflictException;
+import com.dark.library.darklibrary.api.exception.BookConflictException;
 import com.dark.library.darklibrary.domain.model.BookModel;
 import com.dark.library.darklibrary.domain.model.BookTypeModel;
 import io.swagger.v3.oas.annotations.Operation;

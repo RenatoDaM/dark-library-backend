@@ -1,8 +1,8 @@
-package com.dark.library.darklibrary.api.exceptionhandler;
+package com.dark.library.darklibrary.api.exception.exceptionhandler;
 
 import com.dark.library.darklibrary.api.response.ErrorResponse;
-import com.dark.library.darklibrary.domain.exception.BookConflictException;
-import com.dark.library.darklibrary.domain.exception.BookNotFoundException;
+import com.dark.library.darklibrary.api.exception.BookConflictException;
+import com.dark.library.darklibrary.api.exception.BookNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

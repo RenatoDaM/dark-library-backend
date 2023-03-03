@@ -1,7 +1,7 @@
 package com.dark.library.darklibrary.api.controller.openapi;
 
-import com.dark.library.darklibrary.domain.exception.BookConflictException;
-import com.dark.library.darklibrary.domain.exception.BookNotFoundException;
+import com.dark.library.darklibrary.api.exception.BookConflictException;
+import com.dark.library.darklibrary.api.exception.BookNotFoundException;
 import com.dark.library.darklibrary.api.request.GodRequest;
 import com.dark.library.darklibrary.api.request.GodTypeRequest;
 import com.dark.library.darklibrary.api.response.ErrorResponse;

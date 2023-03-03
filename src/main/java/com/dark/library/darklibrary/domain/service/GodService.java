@@ -2,8 +2,8 @@ package com.dark.library.darklibrary.domain.service;
 
 import com.dark.library.darklibrary.domain.dao.GodDAO;
 import com.dark.library.darklibrary.domain.dao.GodTypeDAO;
-import com.dark.library.darklibrary.domain.exception.BookConflictException;
-import com.dark.library.darklibrary.domain.exception.BookNotFoundException;
+import com.dark.library.darklibrary.api.exception.BookConflictException;
+import com.dark.library.darklibrary.api.exception.BookNotFoundException;
 import com.dark.library.darklibrary.domain.model.GodModel;
 import com.dark.library.darklibrary.domain.model.GodTypeModel;
 import com.dark.library.darklibrary.api.request.GodRequest;
