@@ -1,4 +1,4 @@
-package com.dark.library.darklibrary.api.exception.exceptionhandler;
+package com.dark.library.darklibrary.api.exception.handler;
 
 import com.dark.library.darklibrary.api.response.ErrorResponse;
 import com.dark.library.darklibrary.api.exception.BookConflictException;
